@@ -8,6 +8,7 @@
 * [Lootboxes](endpoints/quickstart-1.md)
 * [Ranks](endpoints/publish-your-docs.md)
 * [Vulnerabilties](endpoints/vulnerabilties.md)
+* [Reports](endpoints/reports.md)
 
 ## Basics
 
