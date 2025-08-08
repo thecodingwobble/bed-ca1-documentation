@@ -5,11 +5,11 @@ icon: user
 
 # Users
 
-## Create a new user
+## Register a new user
 
-<mark style="color:green;">`POST`</mark> `/users`
+<mark style="color:green;">`POST`</mark> `/register`
 
-Creates a new user
+Registers a new user. Returns a JWT token.
 
 **Headers**
 
@@ -19,19 +19,19 @@ Creates a new user
 
 **Body**
 
-| Name       | Type   | Description      |
-| ---------- | ------ | ---------------- |
-| `username` | string | Name of the user |
+| Name       | Type   | Description          |
+| ---------- | ------ | -------------------- |
+| `username` | string | Name of the user     |
+| `password` | string | Password of the user |
 
 **Response**
 
 {% tabs %}
 {% tab title="200" %}
 ```json
-{ 
-  "id": 1, 
-  "username": " pentester123", 
-  "reputation": 0 
+{
+   "message": 'User test created successfully.', 
+   "token": '<TOKEN HERE>'
 }
 ```
 {% endtab %}
@@ -39,7 +39,7 @@ Creates a new user
 {% tab title="400" %}
 ```json
 {
-  message: "Error: username is missing"
+  message: "Error: username or password is missing"
 }
 ```
 {% endtab %}
@@ -53,11 +53,50 @@ Creates a new user
 {% endtab %}
 {% endtabs %}
 
+## Log in
+
+<mark style="color:green;">`POST`</mark> `/login`
+
+Logs a user in. Returns a JWT token.
+
+**Headers**
+
+| Name         | Value              |
+| ------------ | ------------------ |
+| Content-Type | `application/json` |
+
+**Body**
+
+| Name       | Type   | Description          |
+| ---------- | ------ | -------------------- |
+| `username` | string | Name of the user     |
+| `password` | string | Password of the user |
+
+**Response**
+
+{% tabs %}
+{% tab title="200" %}
+```json
+{
+   "token": '<TOKEN HERE>'
+}
+```
+{% endtab %}
+
+{% tab title="400" %}
+```json
+{
+  message: "Error: username or password is missing"
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ## Get all users
 
-<mark style="color:green;">`GET`</mark> `/users`
+<mark style="color:green;">`GET`</mark> `/leaderboard`
 
-Retrieve a list of all users with their respective id, username, and reputation.
+Retrieve a list of all users with their respective id, username, and reputation, etc sorted in order of total reputation. Used on frontend for users.html.
 
 **Headers**
 
@@ -72,32 +111,42 @@ Retrieve a list of all users with their respective id, username, and reputation.
 ```json
 [
   {
-    "id": 1,
-    "username": " pentester123",
-    "reputation": 0
+    "id": 3,
+    "username": "turnWhiteHat",
+    "reputation": 740,
+    "points": 2620,
+    "total_rep": 5740,
+    "name": "Skilled Hunter"
   },
   {
-    "id": 2,
-    "username": " hackerNoMore",
-    "reputation": 0
+    "id": 1,
+    "username": "pentester123",
+    "reputation": 1000,
+    "points": 1000,
+    "total_rep": 3500,
+    "name": "Hunter"
   }
 ]
-
 ```
 {% endtab %}
 {% endtabs %}
 
 ## Read user by id
 
-<mark style="color:green;">`GET`</mark> `/users/{id}`
+<mark style="color:green;">`GET`</mark> `/{id}/profile`
 
-Retrieve details of a specific user by providing their id .
+<mark style="color:green;">`GET`</mark> `/profile` <mark style="color:blue;">`JWT`</mark>
+
+Retrieve details of a specific user by providing their id. used for singleUserInfo.html.
+
+The endpoint /profile handles the currently authenticated user for the /profile endpoint.
 
 **Headers**
 
-| Name         | Value              |
-| ------------ | ------------------ |
-| Content-Type | `application/json` |
+| Name                     | Value              |
+| ------------------------ | ------------------ |
+| Content-Type             | `application/json` |
+| Authorization (optional) | JWT bearer token   |
 
 **params**
 
@@ -127,7 +176,13 @@ Retrieve details of a specific user by providing their id .
 {% endtab %}
 {% endtabs %}
 
-## Update a user
+## Update a user <mark style="color:$danger;background-color:$danger;">DEPRECIATED</mark>&#x20;
+
+{% hint style="danger" %}
+#### DEPRECIATED
+
+This endpoint is depreciated, and WILL NOT work anymore for CA2.&#x20;
+{% endhint %}
 
 <mark style="color:green;">`PUT`</mark> `/users/{id}`
 
@@ -186,7 +241,13 @@ Update user details by providing id in the URL and updating user in the request 
 {% endtab %}
 {% endtabs %}
 
-## Get the next rank of the user
+## Get the next rank of the user <mark style="color:$danger;background-color:$danger;">DEPRECIATED</mark>&#x20;
+
+{% hint style="danger" %}
+#### DEPRECIATED
+
+This endpoint is depreciated, and WILL NOT work anymore for CA2.&#x20;
+{% endhint %}
 
 <mark style="color:green;">`POST`</mark> `/users/{id}/next_rank`
 
@@ -227,7 +288,13 @@ Gets the next rank of the user
 {% endtab %}
 {% endtabs %}
 
-## Get user pets
+## Get user pets <mark style="color:$danger;background-color:$danger;">DEPRECIATED</mark>&#x20;
+
+{% hint style="danger" %}
+#### DEPRECIATED
+
+This endpoint is depreciated, and WILL NOT work anymore for CA2.&#x20;
+{% endhint %}
 
 <mark style="color:green;">`POST`</mark> `/users/{id}/pets`
 

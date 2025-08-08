@@ -5,6 +5,12 @@ icon: turn-up
 
 # Ranks
 
+{% hint style="danger" %}
+#### DEPRECIATED
+
+This endpoint is depreciated, and WILL NOT work anymore for CA2.&#x20;
+{% endhint %}
+
 ## Get all ranks
 
 <mark style="color:green;">`GET`</mark> `/ranks`

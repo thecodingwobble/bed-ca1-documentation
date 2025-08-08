@@ -9,8 +9,9 @@ icon: file-chart-column
 
 <mark style="color:green;">`POST`</mark> `/report`
 
-Creates a new report linking a user to a vulnerability. Provide user\_id and\
-vulnerability\_id in the request body. The initial status of the report will be set to 0.
+Creates a new report linking a user to a vulnerability. Provide&#x20;vulnerability\_id in the request body.
+
+The initial status of the report will be set to 0. JWT authentication required.
 
 Upon successful creation of the report:\
 o The report record is added to the Report table.\
@@ -24,15 +25,15 @@ in the response for confirmation.
 
 **Headers**
 
-| Name         | Value              |
-| ------------ | ------------------ |
-| Content-Type | `application/json` |
+| Name          | Value              |
+| ------------- | ------------------ |
+| Content-Type  | `application/json` |
+| Authorization | JWT bearer token   |
 
 **Body**
 
 | Name               | Type   | Description             |
 | ------------------ | ------ | ----------------------- |
-| `user_id`          | number | Id of the user          |
 | `vulnerability_id` | number | Id of the vulnerability |
 
 **Response**
@@ -67,9 +68,44 @@ in the response for confirmation.
 {% endtab %}
 {% endtabs %}
 
-## Create a new user
+## Get /report details
 
-<mark style="color:green;">`POST`</mark> `/users`
+<mark style="color:green;">`GET`</mark>`/reports`
+
+Gets vulnData, reportData, and reviewData for the reports.html endpoint.
+
+**Headers**
+
+| Name          | Value              |
+| ------------- | ------------------ |
+| Content-Type  | `application/json` |
+| Authorization | `Bearer <token>`   |
+
+**Response**
+
+{% tabs %}
+{% tab title="200" %}
+```json
+{
+  "id": 1,
+  "name": "John",
+  "age": 30
+}
+```
+{% endtab %}
+
+{% tab title="400" %}
+```json
+{
+  "error": "Invalid request"
+}
+```
+{% endtab %}
+{% endtabs %}
+
+## Update a new report
+
+<mark style="color:green;">`PUT`</mark>`/reports`
 
 Update the status of a specific report by providing the report\_id (matches the id field in Report table) in the URL and the new status (typically 1 to resolve it) in the request body. If the status is updated to 1 (Closed), the points for the associated vulnerability should be added to the reputation of the user specified by the user\_id in the request body. This user\_id represents the user closing the report. It will overwrite the user\_id of the original bug finder.
 

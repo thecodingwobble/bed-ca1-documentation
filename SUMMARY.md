@@ -2,13 +2,16 @@
 
 * [Welcome](README.md)
 
-## Endpoints
+## API Endpoints
 
-* [Users](endpoints/quickstart.md)
-* [Lootboxes](endpoints/quickstart-1.md)
-* [Lootbox Types](endpoints/lootbox-types.md)
-* [Ranks](endpoints/publish-your-docs.md)
-* [Vulnerabilties](endpoints/vulnerabilties.md)
-* [Reports](endpoints/reports.md)
-* [Pets](endpoints/pets.md)
-* [Petdex](endpoints/petdex.md)
+* [Users](api-endpoints/quickstart.md)
+* [Lootboxes](api-endpoints/quickstart-1.md)
+* [Vulnerabilties](api-endpoints/vulnerabilties.md)
+* [Reports](api-endpoints/reports.md)
+* [Pets](api-endpoints/pets.md)
+
+## DEPRECIATED
+
+* [Petdex](depreciated/petdex.md)
+* [Lootbox Types](depreciated/lootbox-types.md)
+* [Ranks](depreciated/publish-your-docs.md)

@@ -5,6 +5,14 @@ icon: inbox-out
 
 # Lootbox Types
 
+
+
+{% hint style="danger" %}
+#### DEPRECIATED
+
+This endpoint is depreciated, and WILL NOT work anymore for CA2.&#x20;
+{% endhint %}
+
 ## Read all lootbox types
 
 <mark style="color:green;">`GET`</mark> `/lootbox-types`

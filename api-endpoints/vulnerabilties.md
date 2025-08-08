@@ -42,7 +42,13 @@ Retrieve a list of all vulnerabilities.
 
 ***
 
-## Create a new vulnerability class
+## Create a new vulnerability class <mark style="color:$danger;background-color:$danger;">DEPRECIATED</mark>&#x20;
+
+{% hint style="danger" %}
+#### DEPRECIATED
+
+This endpoint is depreciated, and WILL NOT work anymore for CA2.&#x20;
+{% endhint %}
 
 <mark style="color:orange;">`POST`</mark> `/vulnerabilities`
 

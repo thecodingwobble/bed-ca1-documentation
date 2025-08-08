@@ -5,6 +5,12 @@ icon: shield-cat
 
 # Petdex
 
+{% hint style="danger" %}
+#### DEPRECIATED
+
+This endpoint is depreciated, and WILL NOT work anymore for CA2.&#x20;
+{% endhint %}
+
 ## Get all pet species
 
 <mark style="color:green;">`GET`</mark> `/petdex`
