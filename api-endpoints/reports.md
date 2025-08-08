@@ -109,11 +109,14 @@ Gets vulnData, reportData, and reviewData for the reports.html endpoint.
 
 Update the status of a specific report by providing the report\_id (matches the id field in Report table) in the URL and the new status (typically 1 to resolve it) in the request body. If the status is updated to 1 (Closed), the points for the associated vulnerability should be added to the reputation of the user specified by the user\_id in the request body. This user\_id represents the user closing the report. It will overwrite the user\_id of the original bug finder.
 
+JWT authentication is required.
+
 **Headers**
 
-| Name         | Value              |
-| ------------ | ------------------ |
-| Content-Type | `application/json` |
+| Name          | Value              |
+| ------------- | ------------------ |
+| Content-Type  | `application/json` |
+| Authorization | JWT bearer token   |
 
 **Body**
 
